@@ -22,17 +22,36 @@ public class MenuPanel {
 	private static JButton retournerButton;
 	private static JPanel parentPanel;
 	private static JPanel panel;
+	private static ClientPannel client;
 	private JButton voitureButton;
+	private JButton clientButton;
 
 	public MenuPanel() {
 		ajout = new AjoutPanel();
 		louer = new LouerPanel();
 		retourner = new RetournerPanel();
 		voiture = new VoiturePanel();
-
+		client = new ClientPannel();
+		
 		ajoutButtton = new JButton(" Ajouter une voiture");
+		ajoutButtton.setFont(ajoutButtton.getFont().deriveFont(14f));
+		ajoutButtton.setBackground(new Color(189,189,189));
+
 		louerButton = new JButton(" Louer une voiture");
+		louerButton.setFont(louerButton.getFont().deriveFont(14f));
+		louerButton.setBackground(new Color(189,189,189));
+		
 		retournerButton = new JButton("Retourner une voiture");
+		retournerButton.setFont(retournerButton.getFont().deriveFont(14f));
+		retournerButton.setBackground(new Color(189,189,189));
+		
+		voitureButton = new JButton("Voitures");
+		voitureButton.setFont(voitureButton.getFont().deriveFont(14f));
+		voitureButton.setBackground(new Color(189,189,189));
+		
+		clientButton = new JButton("Clients");
+		clientButton.setFont(clientButton.getFont().deriveFont(14f));
+		clientButton.setBackground(new Color(189,189,189));
 
 		parentPanel = new JPanel();
 
@@ -77,8 +96,17 @@ public class MenuPanel {
 						parentPanel.repaint();
 						parentPanel.revalidate();
 					}
-				});		
-		
+				});	
+//--------------------Action_Clients-----------------	
+				clientButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						parentPanel.removeAll();
+						parentPanel.add(ClientPannel.client);
+						parentPanel.repaint();
+						parentPanel.revalidate();
+					}
+				});
+				
 		
 									}
 
@@ -89,8 +117,10 @@ public class MenuPanel {
 
 		nav.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		menu.add(nav, BorderLayout.NORTH);
-		voitureButton = new JButton("Voitures");
 		
+
+		nav.add(clientButton);
+				
 		nav.add(voitureButton);
 
 		nav.add(ajoutButtton);
@@ -98,7 +128,7 @@ public class MenuPanel {
 		nav.add(louerButton);
 
 		nav.add(retournerButton);
-
+		nav.setBackground(new Color (114,137,218));
 		menu.add(parentPanel, BorderLayout.CENTER);
 		parentPanel.add(VoiturePanel.voiture);
 		parentPanel.setLayout(new CardLayout(0, 0));

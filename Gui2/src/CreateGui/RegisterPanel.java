@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,20 +21,29 @@ public class RegisterPanel
 	static JPanel register = new JPanel();
 
 	private static JButton signup;
-	private static JLabel fullnameLabel,userLabel,passLabel,repeatpassLabel,sexeLabel;
-	private static JTextField fullnameText,userText,passText,repeatpassText;
+	private static JLabel prenomLabel,userLabel,passLabel,repeatpassLabel,sexeLabel,nomLabel;
+	private static JTextField prenomText,userText,passText,repeatpassText;
 	private static JRadioButton radioHomme,radioFemme;
 	private static ButtonGroup group;
+	private JTextField nomText;
 	public RegisterPanel() 
 	{
+		
+		nomLabel = new JLabel("Nom ");
+		nomLabel.setForeground(Color.WHITE);
+		nomLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		nomLabel.setBounds(254, 160, 141, 25);
+		
+		nomText = new JTextField();
+		nomText.setBounds(424, 160, 233, 25);
 
-		fullnameLabel = new JLabel("Nom et pr\u00E9nom");
-		fullnameLabel.setForeground(Color.WHITE);
-		fullnameLabel.setBounds(254, 196, 141, 25);
-		fullnameLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		prenomLabel = new JLabel("Prénom");
+		prenomLabel.setForeground(Color.WHITE);
+		prenomLabel.setBounds(254, 196, 141, 25);
+		prenomLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 
-		fullnameText = new JTextField();
-		fullnameText.setBounds(424, 196, 233, 25);
+		prenomText = new JTextField();
+		prenomText.setBounds(424, 196, 233, 25);
 
 		userLabel = new JLabel("Nom d'utilisateur");
 		userLabel.setForeground(Color.WHITE);
@@ -78,6 +88,8 @@ public class RegisterPanel
 
 		signup = new JButton("S'inscrire");
 		signup.setBounds(424, 376, 233, 25);
+		signup.setBackground(new Color(189,189,189));
+		signup.setFont(signup.getFont().deriveFont(signup.getFont().getSize() + 3f));
 
 		setupPanel();
 		setupListeners();
@@ -90,11 +102,16 @@ public class RegisterPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				String name=fullnameText.getText();		
+				String Fname=prenomText.getText();		
+				String Lname=nomText.getText();	
 				String user=userText.getText();		
 				String pass=passText.getText();
 				String repass=repeatpassText.getText();
-				if( !(name.isEmpty()) && !(user.isEmpty()) && !(pass.isEmpty()) && !(repass.isEmpty()) )
+			
+				radioHomme.setActionCommand("Homme");
+				radioFemme.setActionCommand("Femme");
+			
+				if( !(Fname.isEmpty()) && !(user.isEmpty()) && !(pass.isEmpty()) && !(repass.isEmpty()) && !(group.getSelection().equals(null)) && !(Lname.isEmpty()))
 				{
 					if (pass.equals(repass))
 					{
@@ -105,6 +122,12 @@ public class RegisterPanel
 					fw.append(user);
 					fw.append(",");
 					fw.append(pass);
+					fw.append(",");
+					fw.append(Fname);
+					fw.append(",");
+					fw.append(Lname);
+					fw.append(",");
+					fw.append(group.getSelection().getActionCommand());
 					fw.append("\r\n");
 					fw.flush();
 					fw.close();
@@ -147,8 +170,8 @@ public class RegisterPanel
 	{
 		register.setBackground(new Color(70,70,70));
 		register.setLayout(null);
-		register.add(fullnameLabel);
-		register.add(fullnameText);
+		register.add(prenomLabel);
+		register.add(prenomText);
 		register.add(userLabel);
 		register.add(userText);
 		register.add(passLabel);
@@ -159,6 +182,8 @@ public class RegisterPanel
 		register.add(sexeLabel);
 		register.add(radioHomme);
 		register.add(radioFemme);
+		register.add(nomText);		
+		register.add(nomLabel);
 
 	}
 }

@@ -32,7 +32,7 @@ public class VoiturePanel {
 	private JTable table;
 	private JButton refresh;
 
-
+	private String[][] data=new String[100][5];
 
 	
 
@@ -66,7 +66,7 @@ public class VoiturePanel {
 	    
 		
 
-		String[][] data= new String[voit.size()/5][5];
+		
 		for (int i = 0 ; i <(voit.size()/5);i++)
 		{
 			for( int j = 0 ; j<5;j++)
@@ -100,7 +100,19 @@ public class VoiturePanel {
 		refresh = new JButton("rafraîchir");
 		refresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				table.repaint();
+				
+				
+				ArrayList<String>voit = Voiture.ListerVoiture(); 
+				table.tableChanged(null);
+				
+				for (int i = 0 ; i <(voit.size()/5);i++)
+				{
+					for( int j = 0 ; j<5;j++)
+					{
+						data[i][j]= voit.get(j +(i*5)) ;
+					}
+				}
+
 			}
 		});
 		

@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 
@@ -23,25 +25,36 @@ public class LouerPanel {
 	public LouerPanel() {
 				
 		matText = new JTextField();
-		matText.setBounds(232, 58, 154, 20);
+		matText.setBounds(410, 182, 154, 25);
+		matText.setBackground(new Color (229,229,229));
 		
 		dureeText = new JTextField();
-		dureeText.setBounds(232, 89, 154, 20);
+		dureeText.setBounds(410, 218, 154, 25);
+		dureeText.setBackground(new Color (229,229,229));
 		
 		cinText = new JTextField();
-		cinText.setBounds(232, 120, 154, 20);
+		cinText.setBounds(410, 254, 154, 25);
+		cinText.setBackground(new Color (229,229,229));
 		
 		matLabel = new JLabel("Matricule");
-		matLabel.setBounds(113, 61, 61, 14);
+		matLabel.setBounds(286, 187, 61, 14);
+		matLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		matLabel.setForeground(Color.WHITE);
 		
 		cinLabel = new JLabel("Cin");
-		cinLabel.setBounds(113, 123, 61, 14);
+		cinLabel.setBounds(286, 258, 61, 14);
+		cinLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		cinLabel.setForeground(Color.WHITE);
 		
 		dureeLabel = new JLabel("Dur\u00E9e ");
-		dureeLabel.setBounds(113, 92, 61, 14);
+		dureeLabel.setBounds(286, 220, 61, 14);
+		dureeLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		dureeLabel.setForeground(Color.WHITE);
 		
 		louerButton = new JButton("Louer");
-		louerButton.setBounds(156, 192, 120, 23);
+		louerButton.setBounds(341, 290, 223, 23);
+		louerButton.setForeground(Color.WHITE);
+		louerButton.setBackground(new Color(114,137,218));
 		
 		setupPanel();
 		setupListeners();
@@ -87,7 +100,7 @@ public class LouerPanel {
 	
 	
 	private void setupPanel() {
-		
+		louer.setBackground(new Color	(40,43,48));
 		louer.setLayout(null);
 		louer.add(matText);
 		louer.add(dureeText);

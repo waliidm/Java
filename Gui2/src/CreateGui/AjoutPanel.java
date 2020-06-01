@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 
@@ -25,31 +27,46 @@ public class AjoutPanel {
 	public AjoutPanel() {
 				
 		matText = new JTextField();
-		matText.setBounds(232, 58, 154, 20);
+		matText.setBounds(410, 182, 154, 25);
+		matText.setBackground(new Color (229,229,229));
 		
 		marqueText = new JTextField();
-		marqueText.setBounds(232, 89, 154, 20);
+		marqueText.setBounds(410, 218, 154, 25);
+		marqueText.setBackground(new Color (229,229,229));
 		
 		couleurText = new JTextField();
-		couleurText.setBounds(232, 120, 154, 20);
+		couleurText.setBounds(410, 254, 154, 25);
+		couleurText.setBackground(new Color (229,229,229));
 		
 		prixText = new JTextField();
-		prixText.setBounds(232, 151, 154, 20);
+		prixText.setBounds(410, 290, 154, 25);
+		prixText.setBackground(new Color (229,229,229));
 		
 		matLabel = new JLabel("Matricule");
-		matLabel.setBounds(113, 61, 61, 14);
+		matLabel.setBounds(286, 187, 61, 14);
+		matLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		matLabel.setForeground(Color.WHITE);
 		
 		marqueLabel = new JLabel("Marque");
-		marqueLabel.setBounds(113, 92, 61, 14);
+		marqueLabel.setBounds(286, 223, 61, 14);
+		marqueLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		marqueLabel.setForeground(Color.WHITE);
 		
 		couleurLabel = new JLabel("couleur");
-		couleurLabel.setBounds(113, 123, 61, 14);
+		couleurLabel.setBounds(286, 259, 61, 14);
+		couleurLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		couleurLabel.setForeground(Color.WHITE);
 		
 		prixLabel = new JLabel("Prix par jour");
-		prixLabel.setBounds(113, 154, 87, 14);
+		prixLabel.setBounds(286, 295, 87, 14);
+		prixLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		prixLabel.setForeground(Color.WHITE);
 
 		ajoutButton = new JButton("Ajouter");
-		ajoutButton.setBounds(159, 195, 120, 23);
+		ajoutButton.setBounds(341, 333, 223, 23);
+		ajoutButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		ajoutButton.setForeground(Color.WHITE);
+		ajoutButton.setBackground(new Color(114,137,218));
 		
 		setupPanel();
 		setupListeners();
@@ -87,7 +104,7 @@ public class AjoutPanel {
 	
 	
 	private void setupPanel() {
-		
+		ajout.setBackground(new Color	(40,43,48));
 		ajout.setLayout(null);
 		ajout.add(matText);
 		ajout.add(marqueText);

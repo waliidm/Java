@@ -56,7 +56,7 @@ public class ClientPannel{
 	
 	
 	private void setupPanel() {
-		String[] colNames= {"Nom d'utilisateur","Mot de passe","Prénom","Nom ","Sexe"};
+		String[] colNames= {"CIN","Prénom","Nom ","Sexe"};
 
 
 		ArrayList<String>voit = Client.ListerClient();    

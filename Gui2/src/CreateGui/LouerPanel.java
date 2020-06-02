@@ -81,14 +81,14 @@ public class LouerPanel {
 						String[] detail=voiture.split(",");
 						int nbjour=Integer.valueOf(duree);
 						double prixJour=Double.valueOf(detail[3]);
-						Contrat c= new Contrat(mat,cin,nbjour,prixJour);
+						Contrat c= new Contrat(cin,mat,nbjour,prixJour);
 						int retour=c.AjoutContrat();
 						if (retour==1)
 							JOptionPane.showMessageDialog(MainFrame.Frame1, "Location avec succées", "Success",JOptionPane.WARNING_MESSAGE);
 						else if (retour==0) {
 							JOptionPane.showMessageDialog(MainFrame.Frame1, "Matricule invalide", "Erreur",JOptionPane.WARNING_MESSAGE);
-						}else
-							JOptionPane.showMessageDialog(MainFrame.Frame1, "Essayer plus tard", "Erreur",JOptionPane.WARNING_MESSAGE);
+						}else if(retour==2)
+							JOptionPane.showMessageDialog(MainFrame.Frame1, "Le client doit etre enregistrer avant", "Erreur",JOptionPane.WARNING_MESSAGE);
 					
 					}}
 				

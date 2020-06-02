@@ -31,42 +31,20 @@ public class VoiturePanel {
 	public static JPanel voiture = new JPanel();
 	private JTable table;
 	private JButton refresh;
-
 	private String[][] data=new String[100][5];
-
 	
-
 	public VoiturePanel() {
-	
-		
-		
-
-
 		setupPanel();
 		setupListeners();
 	}
 
 	private void setupListeners() {
 
-		
-	
-	
 	}
 
-	
-	
 	private void setupPanel() {
 		String[] colNames= {"Matricule","Marque","Couleur","Prix par jour","Disposibilite"};
-
-
 		ArrayList<String>voit = Voiture.ListerVoiture();    
-
-		
-		
-	    
-		
-
-		
 		for (int i = 0 ; i <(voit.size()/5);i++)
 		{
 			for( int j = 0 ; j<5;j++)
@@ -74,19 +52,13 @@ public class VoiturePanel {
 				data[i][j]= voit.get(j +(i*5)) ;
 			}
 		}
-
-		
-
-		
-		
 			table = new JTable( data,colNames );
 			table.setBorder(new LineBorder(new Color(114, 137, 218), 1, true));
 			table.setBackground(new Color (66,69,73));
-			
+
 			table.getTableHeader().setBackground(new Color (114,137,218));
 			table.getTableHeader().setForeground(Color.BLACK);
 			table.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
-			
 			table.setPreferredScrollableViewportSize(new Dimension(900, 400));
 			table.setFillsViewportHeight(true);
 			table.setForeground(Color.WHITE);
@@ -95,16 +67,12 @@ public class VoiturePanel {
 		voiture.add(scrollPane);
 		voiture.setLayout(new FlowLayout() );
 		voiture.setBorder(BorderFactory.createEmptyBorder(70, 10, 10, 10));
-		voiture.setBackground(new Color	(40,43,48));
-		
+		voiture.setBackground(new Color	(40,43,48));	
 		refresh = new JButton("rafraîchir");
 		refresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
 				ArrayList<String>voit = Voiture.ListerVoiture(); 
 				table.tableChanged(null);
-				
 				for (int i = 0 ; i <(voit.size()/5);i++)
 				{
 					for( int j = 0 ; j<5;j++)

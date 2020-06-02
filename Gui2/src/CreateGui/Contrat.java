@@ -19,6 +19,10 @@ public class Contrat {
 	}
 	public int AjoutContrat(){
 		try {
+			if(Client.RechercheClient(cin).compareTo("")==0)
+			{
+				return 2;
+			}
 			String voiture=Voiture.RechercheVoiture(mat);			
 			String[] detailsVoiture=voiture.split(",");
 			FileWriter pw = new FileWriter("contrat.csv",true);

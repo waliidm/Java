@@ -1,5 +1,4 @@
 package CreateGui;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,67 +25,36 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-
 public class ClientPannel{
 	public static JPanel client = new JPanel();
 	private JTable table;
-	private JButton refresh;
-
-
-
-	
-
+	private JButton refresh;	
+	private String[][] data= new String[100][4];
 	public ClientPannel() {
-	
-		
-		
-
-
 		setupPanel();
 		setupListeners();
 	}
 
 	private void setupListeners() {
-
-		
-	
-	
 	}
 
-	
-	
 	private void setupPanel() {
 		String[] colNames= {"CIN","Prénom","Nom ","Sexe"};
-
-
-		ArrayList<String>voit = Client.ListerClient();    
-
-		
-		
-	    
-		
-
-		String[][] data= new String[voit.size()/5][5];
-		for (int i = 0 ; i <(voit.size()/5);i++)
+		ArrayList<String>clt = Client.ListerClient();    
+		for (int i = 0 ; i <(clt.size()/4);i++)
 		{
-			for( int j = 0 ; j<5;j++)
-			{
-				data[i][j]= voit.get(j +(i*5)) ;
+			for( int j = 0 ; j<4;j++)
+			{	
+				
+				data[i][j]= clt.get(j +(i*4)) ;
 			}
 		}
-
-		
-
-		
-		
 			table = new JTable( data,colNames );
 			table.setBorder(new LineBorder(new Color(114, 137, 218), 1, true));
 			table.setBackground(new Color (66,69,73));
-			
 			table.getTableHeader().setBackground(new Color (114,137,218));
 			table.getTableHeader().setForeground(Color.BLACK);
-			table.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
-			
+			table.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));			
 			table.setPreferredScrollableViewportSize(new Dimension(900, 400));
 			table.setFillsViewportHeight(true);
 			table.setForeground(Color.WHITE);
@@ -95,28 +63,28 @@ public class ClientPannel{
 		client.add(scrollPane);
 		client.setLayout(new FlowLayout() );
 		client.setBorder(BorderFactory.createEmptyBorder(70, 10, 10, 10));
-		client.setBackground(new Color	(40,43,48));
-		
+		client.setBackground(new Color	(40,43,48));		
 		refresh = new JButton("rafraîchir");
 		refresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				table.repaint();
+				ArrayList<String>clt = Client.ListerClient(); 
+				table.tableChanged(null);
+				for (int i = 0 ; i <(clt.size()/4);i++)
+				{
+					for( int j = 0 ; j<4;j++)
+					{
+						System.out.println(clt.get(j +(i*4)));
+						System.out.println("---------------------------------------");
+						data[i][j]= clt.get(j +(i*4)) ;
+						
+					}
+				}
 			}
-		});
-		
+		});		
 		refresh.setBounds(424, 376, 233, 25);
 		refresh.setBackground(new Color(114,137,218));
 		refresh.setFont(refresh.getFont().deriveFont(refresh.getFont().getSize() + 3f));
-		refresh.setForeground(Color.WHITE);
-		
+		refresh.setForeground(Color.WHITE);	
 	client.add(refresh);
-
-		
-		
-
-
-	
-
-
 	}
 }

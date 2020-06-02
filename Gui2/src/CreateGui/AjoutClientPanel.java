@@ -98,27 +98,16 @@ public class AjoutClientPanel {
 
 				if (    (cin.isEmpty()) || (prenom.isEmpty()) || (nom.isEmpty()) ||   !(group.getSelection().equals(null)) ) 			
 				{
+					int res=Client.AjouterClient(cin, nom, prenom, group.getSelection().getActionCommand());
+					if (res==0) {
+						JOptionPane.showMessageDialog(MainFrame.Frame1, "Cin existe déja", "Erreur",JOptionPane.WARNING_MESSAGE);
+					}else if(res==2) {
+						JOptionPane.showMessageDialog(MainFrame.Frame1, "Erreur dans le systeme", "Erreur",JOptionPane.WARNING_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(MainFrame.Frame1, "Ajout avec succées", "Success",JOptionPane.WARNING_MESSAGE);
+					}
 
-				try
-				{
-					FileWriter fw = new FileWriter("client.csv",true);	
-					
-					fw.append(cin);
-					fw.append(",");
-					fw.append(prenom);
-					fw.append(",");
-					fw.append(nom);
-					fw.append(",");
-					fw.append(group.getSelection().getActionCommand());
-					fw.append("\r\n");
-					fw.flush();
-					fw.close();
-					System.out.println("file done");				
-				}
-				catch(IOException err)
-				{
-					System.out.println("file exists");
-				}
+				
 
 				}
 				else

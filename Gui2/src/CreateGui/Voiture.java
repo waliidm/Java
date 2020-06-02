@@ -51,14 +51,8 @@ public class Voiture {
 			if(voiture.get(i).compareTo(mat)==0) {
 				if((tache==1)&&(voiture.get(i+4).compareTo("disponible")==0)) {
 					voiture.set(i+4,"indisponible");
-					System.out.println("aaaaaaaaaa");
-					System.out.println(tache);
-					System.out.println(voiture.get(i+4).compareTo("disponible")==0);
 					break;
 				}else if((tache==2)&&((voiture.get(i+4).compareTo("indisponible")==0))){				
-					System.out.println("bbbbbbbb");
-					System.out.println(tache);
-					System.out.println(voiture.get(i+4).compareTo("indisponible")==0);
 					voiture.set(i+4,"disponible");
 					break;
 				}else if((tache==2)&&((voiture.get(i+4).compareTo("disponible")==0))) {			

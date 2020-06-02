@@ -71,9 +71,6 @@ public class Client {
 	         while((line = br.readLine()) != null) {
 	            tempArr = line.split(",");	            
 	            if(i>0) 
-	            	System.out.println(tempArr[0]);
-	            	System.out.println(cin+"/");
-	            	System.out.println(tempArr[0].compareTo(cin));
 	            	if(tempArr[0].compareTo(cin)==0)
 	            		return line;
 	            i++;
